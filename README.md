@@ -1,43 +1,34 @@
 # Paulo Villalobos
 
-**AI Systems Architect & Product Engineer**
+**Software Developer | Systems Design & AI**
 
-I turn complex product requirements into working systems: data models, persistent state, AI workflows and the interface people use.
+I design and implement software systems, with a focus on architecture, data workflows and AI integration. My work spans frontend and backend development, databases, evidence processing and agent orchestration.
 
-Based in **Porto, Portugal**. Open to **remote roles and contract projects worldwide**.
+Based in **Porto, Portugal**. Available for **remote software development roles**, full-time or part-time.
 
-[Contact me](mailto:paulo@foaap.app) · [FOAAP](https://foaap.app)
+## Start here: Mesh Governance
 
-## Selected work
+[**Explore Mesh Governance →**](https://github.com/imperiobaal69-web/mesh-governance)
 
-### FOAAP — state and memory for AI products
+A Python and SQLite library for managing evidence, revisions, review and publication. It addresses a concrete problem: when a source or assertion changes, dependent decisions and approvals must remain traceable.
 
-Designed and built an AI venture operating system connecting structured memory, decisions, workflows and a React interface. Its engine provides an API and MCP integration for working with claims, contradictions, evidence and next actions.
+- Immutable revision history and transactional, idempotent commands.
+- Independent review tied to exact revisions; changed sources invalidate dependent assertions.
+- Controlled publication, rollback checks and access-aware snapshot reads.
 
-Technical focus: persistent state, context retrieval, decision history and the boundary between model reasoning and application logic.
+**39 tests passing locally and in GitHub Actions**, including concurrent reviews, transaction rollback, evidence integrity and access revocation. Runs with the Python standard library; the host application supplies trusted user identities.
 
-[Explore FOAAP](https://foaap.app)
+[Read the implementation](https://github.com/imperiobaal69-web/mesh-governance/blob/main/scripts/mesh_ontology.py) · [Inspect the tests](https://github.com/imperiobaal69-web/mesh-governance/blob/main/scripts/test_mesh_ontology.py)
 
-### Bicis Sapiens — civic mobility on the web
+## More selected work
 
-A web platform for human-centered mobility in Porto, with a React interface, multilingual content, community signup flows and Supabase integration.
+| Project | What to inspect | Verification |
+| --- | --- | --- |
+| [FOAAP Engine](https://github.com/imperiobaal69-web/foaap-engine-public) | JavaScript state transitions, explicit contradictions, claim lineage and source accounting. | 28 core tests passed locally |
+| [Energy Baseline](https://github.com/imperiobaal69-web/energy-baseline-public) | Schema validation, exact quote anchoring, evidence offsets and stable fingerprints for extracted data. | 13 tests passed locally |
 
-[Read the code](https://github.com/imperiobaal69-web/bicis-sapiens-web)
+## How I work
 
-### Private Wealth Platform
+I turn an idea into a system design, implement it, evaluate the results and identify its limitations. I use AI assistants during development and take responsibility for architectural decisions and validation. I integrate AI where it serves a clear purpose in the product.
 
-Built a property portfolio platform for a high-net-worth client, including an Anthropic-powered assistant for natural-language operations over structured records. Client details and source code remain private.
-
-## Technical focus
-
-- **AI systems:** structured memory, multi-step workflows, OpenAI and Anthropic APIs, MCP integrations.
-- **Product engineering:** React, Vite, JavaScript, TypeScript, Node.js, Supabase and PostgreSQL.
-- **Delivery:** architecture, API integration, web interfaces, debugging and technical documentation.
-
-I use AI coding tools as part of my development workflow and take responsibility for the architecture, implementation decisions and resulting product.
-
-## Work with me
-
-I can help build an AI product, unblock an existing workflow, or ship a web application or website. I enjoy taking a concrete problem from an ambiguous requirement to a working implementation.
-
-**paulo@foaap.app** · Spanish, Portuguese and English
+[Explore the Mesh product](https://nexus.foaap.app/) · [FOAAP](https://foaap.app/) · [Contact](mailto:paulo@foaap.app)

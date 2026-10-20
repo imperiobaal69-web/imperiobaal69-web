@@ -1,36 +1,60 @@
 # Paulo Villalobos
 
-**Software Developer | Systems Design & AI**
+Software engineer. Machine learning, data pipelines, backend systems.
+Porto, Portugal · remote · [CV](https://paulo.foaap.app/Paulo-Villalobos-CV.pdf) · [paulo@foaap.app](mailto:paulo@foaap.app)
 
-I design and implement software systems, with a focus on architecture, data workflows and AI integration. My work spans frontend and backend development, databases, evidence processing and agent orchestration.
+Most of my work has been private. These are the systems I've chosen to publish.
+Every number below is produced by code in the linked repository.
 
-Based in **Porto, Portugal**. Available for **remote software development roles**, full-time or part-time.
+---
 
-[**Download CV (PDF)**](https://paulo.foaap.app/Paulo-Villalobos-CV.pdf)
+**[cordis-field-classifier](https://github.com/imperiobaal69-web/cordis-field-classifier)** - machine learning
 
-## Start here: Mesh Governance
+52,000 EU research projects classified into 37 scientific fields. Prior,
+TF-IDF, frozen embeddings and a fine-tuned transformer under one protocol;
+tested on a later funding programme the models never saw.
 
-[**Explore Mesh Governance →**](https://github.com/imperiobaal69-web/mesh-governance)
+- Fine-tuned model: 0.709 micro-F1 in-distribution and 0.709 on the later
+  programme, where TF-IDF falls to 0.637.
+- The official CORDIS export makes `pandas.read_csv` drop 285 projects and
+  corrupt 960 more without an error. The reader here recovers every record.
+- Fine-tuning first stalled at the label-frequency baseline; traced to a pooler
+  the encoder never trained, replaced, and documented.
 
-A Python and SQLite library for managing evidence, revisions, review and publication. It addresses a concrete problem: when a source or assertion changes, dependent decisions and approvals must remain traceable.
+`Python` `PyTorch` `Transformers` `scikit-learn` `FastAPI` `Docker`
 
-- Immutable revision history and transactional, idempotent commands.
-- Independent review tied to exact revisions; changed sources invalidate dependent assertions.
-- Controlled publication, rollback checks and access-aware snapshot reads.
+**[pt-open-data-pipeline](https://github.com/imperiobaal69-web/pt-open-data-pipeline)** - data engineering
 
-**42 tests passing locally and in GitHub Actions**, including concurrent reviews, transaction rollback, evidence integrity and access revocation. Runs with the Python standard library; the host application supplies trusted user identities.
+Portuguese card-spending statistics (INE) for 308 municipalities since 2020:
+immutable raw layer with checksums, DuckDB, dbt staging -> marts, incremental
+loads, Parquet exports, scheduled refresh.
 
-[Read the implementation](https://github.com/imperiobaal69-web/mesh-governance/blob/main/scripts/mesh_ontology.py) · [Inspect the tests](https://github.com/imperiobaal69-web/mesh-governance/blob/main/scripts/test_mesh_ontology.py)
+- 73 dbt tests, including additivity across geographic levels. They caught a
+  published inconsistency: one region-month where INE's online figure is 0 while
+  its 13 municipalities add up to 2,553.
+- Documents the API behaviour it depends on (silent latest-month default,
+  failures returned as HTTP 200) and what the public data cannot answer.
 
-## More selected work
+`Python` `SQL` `dbt` `DuckDB` `Parquet`
 
-| Project | What to inspect | Verification |
-| --- | --- | --- |
-| [FOAAP Engine](https://github.com/imperiobaal69-web/foaap-engine-public) | JavaScript state transitions, explicit contradictions, claim lineage and source accounting. | 31 core tests + 1 MCP contract test passed (32 total) |
-| [Energy Baseline](https://github.com/imperiobaal69-web/energy-baseline-public) | Schema validation, exact quote anchoring, evidence offsets and stable fingerprints for extracted data. | 13 tests passed locally |
+**[mesh-governance](https://github.com/imperiobaal69-web/mesh-governance)** - software engineering
 
-## How I work
+Evidence store with append-only history enforced by database triggers,
+idempotent transactional commands, independent review bound to exact revisions,
+and publication rules that refuse rollback to stale evidence. 42 tests,
+standard library only.
 
-I turn an idea into a system design, implement it, evaluate the results and identify its limitations. I use AI assistants during development and take responsibility for architectural decisions and validation. I integrate AI where it serves a clear purpose in the product.
+`Python` `SQLite`
 
-[Open NEXUS — the Mesh product](https://nexus.foaap.app/#/) · [FOAAP](https://foaap.app/) · [Contact](mailto:paulo@foaap.app)
+---
+
+Also: [foaap-engine-public](https://github.com/imperiobaal69-web/foaap-engine-public)
+(stateful context engine for AI applications, JavaScript, 32 tests) ·
+[energy-baseline-public](https://github.com/imperiobaal69-web/energy-baseline-public)
+(validation layer for LLM extraction, 13 tests) ·
+[bicis-sapiens-web](https://github.com/imperiobaal69-web/bicis-sapiens-web)
+(production React + Supabase site, row-level security checked in CI) ·
+live: [NEXUS](https://nexus.foaap.app/#/), [FOAAP](https://foaap.app/)
+
+I use AI assistants while building. The problem, the architecture, the
+evaluation and every claim are mine to defend.

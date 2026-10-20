@@ -1,62 +1,76 @@
 # Paulo Villalobos
 
-Software engineer. Machine learning, data pipelines, backend systems.
+Software engineer. Backend systems, data pipelines, machine learning.
 Porto, Portugal · remote · [CV](https://paulo.foaap.app/Paulo-Villalobos-CV.pdf) · [paulo@foaap.app](mailto:paulo@foaap.app)
 
 Most of my work has been private. These are the systems I've chosen to publish.
-Every number below is produced by code in the linked repository.
+Every number below comes from code in the linked repository.
 
 ---
 
-**[cordis-field-classifier](https://github.com/imperiobaal69-web/cordis-field-classifier)** - machine learning
+### Backend
 
-52,000 EU research projects classified into 37 scientific fields. Prior,
-TF-IDF, frozen embeddings and a fine-tuned transformer under one protocol;
-tested on a later funding programme the models never saw.
+**[macro-vintages](https://github.com/imperiobaal69-web/macro-vintages)**
+Euro-area macro data from the ECB and Eurostat in PostgreSQL, keeping every
+value the system has ever held, so the API can answer what a series said at any
+past moment. Workers claim jobs with `SKIP LOCKED` and lease fencing; race tests
+run six processes against each other, and a mutation check removes each lock in
+turn to prove a test catches it. Async FastAPI with ETags, hashed API keys and
+rate limits. 120 tests, 0 inconsistent reads in 9,406 under load.
+`Python` `FastAPI` `PostgreSQL` `asyncpg`
 
-- Fine-tuned model: 0.709 micro-F1 in-distribution and 0.709 on the later
-  programme, where TF-IDF falls to 0.637 (95% bootstrap intervals on every
-  number).
-- The official CORDIS export makes `pandas.read_csv` drop 285 projects and
-  corrupt 960 more without an error. The reader here recovers every record.
-- Fine-tuning first stalled at the label-frequency baseline; traced to a pooler
-  the encoder never trained, replaced, and documented.
+**[audio-jobs](https://github.com/imperiobaal69-web/audio-jobs)**
+Background-job system in Go on Postgres and Redis Streams: at-least-once
+delivery, retries, a dead-letter queue, lease fencing. In the chaos test 1,000
+of 1,000 jobs finish while workers are killed mid-job and Redis loses its data.
+Profiling took throughput from 162 to 532 jobs/s.
+`Go` `PostgreSQL` `Redis` `Docker`
 
-`Python` `PyTorch` `Transformers` `scikit-learn` `FastAPI` `Docker`
+### Data
 
-**[pt-open-data-pipeline](https://github.com/imperiobaal69-web/pt-open-data-pipeline)** - data engineering
-
+**[pt-open-data-pipeline](https://github.com/imperiobaal69-web/pt-open-data-pipeline)**
 Portuguese card-spending statistics (INE) for 308 municipalities since 2020:
-immutable raw layer with checksums, DuckDB, dbt staging -> marts, incremental
-loads, Parquet exports, scheduled refresh.
+immutable raw layer, DuckDB, dbt marts, incremental loads, Parquet. Its 82 data
+tests caught a published inconsistency: a region-month where INE reports 0 online
+transactions while its 13 municipalities add up to 2,553.
+`Python` `SQL` `dbt` `DuckDB`
 
-- 82 dbt tests, including additivity across geographic levels and a guard
-  that fails the build if INE changes a series' unit or scaling. They caught a
-  published inconsistency: one region-month where INE's online figure is 0 while
-  its 13 municipalities add up to 2,553.
-- Documents the API behaviour it depends on (silent latest-month default,
-  failures returned as HTTP 200) and what the public data cannot answer.
+### Infrastructure
 
-`Python` `SQL` `dbt` `DuckDB` `Parquet`
+**[platform-infra](https://github.com/imperiobaal69-web/platform-infra)**
+Runs audio-jobs on Kubernetes with Prometheus alerts on SLOs and six scripted
+failure drills (worker kills, a Postgres crash, a Redis wipe, a bad deploy rolled
+back automatically), 0 jobs lost. Terraform for a private GKE setup, validated in
+CI; CI also deploys the whole stack to a kind cluster on every push.
+`Kubernetes` `Terraform` `Prometheus` `Bash`
 
-**[mesh-governance](https://github.com/imperiobaal69-web/mesh-governance)** - software engineering
+### Machine learning and AI
 
+**[cordis-field-classifier](https://github.com/imperiobaal69-web/cordis-field-classifier)**
+Classifies 52,000 EU research projects into 37 fields. A fine-tuned transformer
+reaches 0.709 micro-F1 and holds it on a later funding programme it never saw,
+where TF-IDF drops to 0.637. Bootstrap intervals on every number. The official
+export makes pandas silently drop 285 rows; the reader here recovers them.
+`PyTorch` `Transformers` `scikit-learn` `FastAPI`
+
+**[incident-agent](https://github.com/imperiobaal69-web/incident-agent)**
+Ten injected faults in a small OpenTelemetry-instrumented system, an agent that
+investigates them through read-only tools, and a harness that scores every
+report against ground truth with code: citations must exist, fixes must survive
+a re-run of the incident. A local 4B model finds the right service in 60% of
+runs but never the full cause; my rule-based baseline gets 70%.
+`Python` `OpenTelemetry` `React` `TypeScript`
+
+### Libraries
+
+**[mesh-governance](https://github.com/imperiobaal69-web/mesh-governance)**
 Evidence store with append-only history enforced by database triggers,
-idempotent transactional commands, independent review bound to exact revisions,
-and publication rules that refuse rollback to stale evidence. 42 tests,
-standard library only, typed under `mypy --strict`.
-
-`Python` `SQLite`
+idempotent commands and review bound to exact revisions. 42 tests, standard
+library only, `mypy --strict`.
 
 ---
 
-Also: [foaap-engine-public](https://github.com/imperiobaal69-web/foaap-engine-public)
-(stateful context engine for AI applications, JavaScript, 32 tests) ·
-[energy-baseline-public](https://github.com/imperiobaal69-web/energy-baseline-public)
-(validation layer for LLM extraction, 13 tests) ·
-[bicis-sapiens-web](https://github.com/imperiobaal69-web/bicis-sapiens-web)
-(production React + Supabase site, row-level security checked in CI) ·
+Also: [foaap-engine-public](https://github.com/imperiobaal69-web/foaap-engine-public) ·
+[energy-baseline-public](https://github.com/imperiobaal69-web/energy-baseline-public) ·
+[bicis-sapiens-web](https://github.com/imperiobaal69-web/bicis-sapiens-web) ·
 live: [NEXUS](https://nexus.foaap.app/#/), [FOAAP](https://foaap.app/)
-
-I use AI assistants while building. The problem, the architecture, the
-evaluation and every claim are mine to defend.

@@ -15,7 +15,8 @@ TF-IDF, frozen embeddings and a fine-tuned transformer under one protocol;
 tested on a later funding programme the models never saw.
 
 - Fine-tuned model: 0.709 micro-F1 in-distribution and 0.709 on the later
-  programme, where TF-IDF falls to 0.637.
+  programme, where TF-IDF falls to 0.637 (95% bootstrap intervals on every
+  number).
 - The official CORDIS export makes `pandas.read_csv` drop 285 projects and
   corrupt 960 more without an error. The reader here recovers every record.
 - Fine-tuning first stalled at the label-frequency baseline; traced to a pooler
@@ -29,7 +30,8 @@ Portuguese card-spending statistics (INE) for 308 municipalities since 2020:
 immutable raw layer with checksums, DuckDB, dbt staging -> marts, incremental
 loads, Parquet exports, scheduled refresh.
 
-- 73 dbt tests, including additivity across geographic levels. They caught a
+- 82 dbt tests, including additivity across geographic levels and a guard
+  that fails the build if INE changes a series' unit or scaling. They caught a
   published inconsistency: one region-month where INE's online figure is 0 while
   its 13 municipalities add up to 2,553.
 - Documents the API behaviour it depends on (silent latest-month default,
@@ -42,7 +44,7 @@ loads, Parquet exports, scheduled refresh.
 Evidence store with append-only history enforced by database triggers,
 idempotent transactional commands, independent review bound to exact revisions,
 and publication rules that refuse rollback to stale evidence. 42 tests,
-standard library only.
+standard library only, typed under `mypy --strict`.
 
 `Python` `SQLite`
 

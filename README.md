@@ -3,8 +3,11 @@
 Software engineer. Backend systems, data pipelines, machine learning.
 Porto, Portugal · remote · [CV](https://paulo.foaap.app/Paulo-Villalobos-CV.pdf) · [paulo@foaap.app](mailto:paulo@foaap.app)
 
-Most of my work has been private. These are the systems I've chosen to publish.
-Every number below comes from code in the linked repository.
+Most of my work has been private: I keep notes, designs and experiments locally
+in CherryTree, and started publishing on GitHub in 2026. The projects below are
+recent builds on problems I'd been working on privately, from EU research data
+and Portuguese public statistics to job systems and infrastructure. Every number
+below comes from code in the linked repository.
 
 ---
 

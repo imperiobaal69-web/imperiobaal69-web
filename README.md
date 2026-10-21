@@ -40,8 +40,10 @@ transactions while its 13 municipalities add up to 2,553.
 **[platform-infra](https://github.com/imperiobaal69-web/platform-infra)**
 Runs audio-jobs on Kubernetes with Prometheus alerts on SLOs and six scripted
 failure drills (worker kills, a Postgres crash, a Redis wipe, a bad deploy rolled
-back automatically), 0 jobs lost. Terraform for a private GKE setup, validated in
-CI; CI also deploys the whole stack to a kind cluster on every push.
+back automatically), 0 jobs lost. The Terraform for private GKE, Cloud SQL and
+Workload Identity was applied to a real GCP project, checked (11/11, each with a
+negative test), drilled under load and destroyed; the real run found six bugs
+that static checks had passed.
 `Kubernetes` `Terraform` `Prometheus` `Bash`
 
 ### Machine learning and AI

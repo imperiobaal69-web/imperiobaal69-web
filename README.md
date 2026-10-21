@@ -10,7 +10,7 @@ Every number below comes from code in the linked repository.
 
 ### Backend
 
-**[macro-vintages](https://github.com/imperiobaal69-web/macro-vintages)**
+**[macro-vintages](https://github.com/paulovillalobos/macro-vintages)**
 Euro-area macro data from the ECB and Eurostat in PostgreSQL, keeping every
 value the system has ever held, so the API can answer what a series said at any
 past moment. Workers claim jobs with `SKIP LOCKED` and lease fencing; race tests
@@ -19,7 +19,7 @@ turn to prove a test catches it. Async FastAPI with ETags, hashed API keys and
 rate limits. 120 tests, 0 inconsistent reads in 9,406 under load.
 `Python` `FastAPI` `PostgreSQL` `asyncpg`
 
-**[audio-jobs](https://github.com/imperiobaal69-web/audio-jobs)**
+**[audio-jobs](https://github.com/paulovillalobos/audio-jobs)**
 Background-job system in Go on Postgres and Redis Streams: at-least-once
 delivery, retries, a dead-letter queue, lease fencing. In the chaos test 1,000
 of 1,000 jobs finish while workers are killed mid-job and Redis loses its data.
@@ -28,7 +28,7 @@ Profiling took throughput from 162 to 532 jobs/s.
 
 ### Data
 
-**[pt-open-data-pipeline](https://github.com/imperiobaal69-web/pt-open-data-pipeline)**
+**[pt-open-data-pipeline](https://github.com/paulovillalobos/pt-open-data-pipeline)**
 Portuguese card-spending statistics (INE) for 308 municipalities since 2020:
 immutable raw layer, DuckDB, dbt marts, incremental loads, Parquet. Its 82 data
 tests caught a published inconsistency: a region-month where INE reports 0 online
@@ -37,7 +37,7 @@ transactions while its 13 municipalities add up to 2,553.
 
 ### Infrastructure
 
-**[platform-infra](https://github.com/imperiobaal69-web/platform-infra)**
+**[platform-infra](https://github.com/paulovillalobos/platform-infra)**
 Runs audio-jobs on Kubernetes with Prometheus alerts on SLOs and six scripted
 failure drills (worker kills, a Postgres crash, a Redis wipe, a bad deploy rolled
 back automatically), 0 jobs lost. The Terraform for private GKE, Cloud SQL and
@@ -48,14 +48,14 @@ that static checks had passed.
 
 ### Machine learning and AI
 
-**[cordis-field-classifier](https://github.com/imperiobaal69-web/cordis-field-classifier)**
+**[cordis-field-classifier](https://github.com/paulovillalobos/cordis-field-classifier)**
 Classifies 52,000 EU research projects into 37 fields. A fine-tuned transformer
 reaches 0.709 micro-F1 and holds it on a later funding programme it never saw,
 where TF-IDF drops to 0.637. Bootstrap intervals on every number. The official
 export makes pandas silently drop 285 rows; the reader here recovers them.
 `PyTorch` `Transformers` `scikit-learn` `FastAPI`
 
-**[incident-agent](https://github.com/imperiobaal69-web/incident-agent)**
+**[incident-agent](https://github.com/paulovillalobos/incident-agent)**
 Ten injected faults in a small OpenTelemetry-instrumented system, an agent that
 investigates them through read-only tools, and a harness that scores every
 report against ground truth with code: citations must exist, fixes must survive
@@ -65,14 +65,14 @@ runs but never the full cause; my rule-based baseline gets 70%.
 
 ### Libraries
 
-**[mesh-governance](https://github.com/imperiobaal69-web/mesh-governance)**
+**[mesh-governance](https://github.com/paulovillalobos/mesh-governance)**
 Evidence store with append-only history enforced by database triggers,
 idempotent commands and review bound to exact revisions. 42 tests, standard
 library only, `mypy --strict`.
 
 ---
 
-Also: [foaap-engine-public](https://github.com/imperiobaal69-web/foaap-engine-public) ·
-[energy-baseline-public](https://github.com/imperiobaal69-web/energy-baseline-public) ·
-[bicis-sapiens-web](https://github.com/imperiobaal69-web/bicis-sapiens-web) ·
+Also: [foaap-engine-public](https://github.com/paulovillalobos/foaap-engine-public) ·
+[energy-baseline-public](https://github.com/paulovillalobos/energy-baseline-public) ·
+[bicis-sapiens-web](https://github.com/paulovillalobos/bicis-sapiens-web) ·
 live: [NEXUS](https://nexus.foaap.app/#/), [FOAAP](https://foaap.app/)

@@ -73,6 +73,13 @@ Evidence store with append-only history enforced by database triggers,
 idempotent commands and review bound to exact revisions. 42 tests, standard
 library only, `mypy --strict`.
 
+### Security
+
+While reading a public procedures catalogue, I found an SMTP credential being
+sent to the browser by a software platform that Portuguese municipalities use.
+I reported it to the vendor and the municipality, with CERT.PT in copy, and the
+vendor confirmed the same day that it was fixed for every affected client.
+
 ---
 
 Also: [foaap-engine-public](https://github.com/paulovillalobos/foaap-engine-public) ·

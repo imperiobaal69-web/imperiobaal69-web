@@ -1,7 +1,7 @@
 # Paulo Villalobos
 
 Software engineer. Backend systems, data pipelines, machine learning.
-Porto, Portugal · remote · [CV](https://paulo.foaap.app/Paulo-Villalobos-CV.pdf) · [paulo@foaap.app](mailto:paulo@foaap.app)
+Porto, Portugal · remote · [CV](https://github.com/paulovillalobos/paulovillalobos/blob/main/Paulo-Villalobos-CV.pdf) · [paulo@foaap.app](mailto:paulo@foaap.app)
 
 Most of my work has been private: I keep notes, designs and experiments locally
 in CherryTree, and started publishing on GitHub in 2026. The projects below are
